@@ -1,42 +1,46 @@
-require "./solution.rb"
-require "./solution_2.rb"
+require_relative "./solution.rb"
+require_relative "./solution2.rb"
 
-# TEST FOR solution
+# Test cases
 
-if solution([3, 8, 9, 7, 6], 3) == [9, 7, 6, 3, 8]
+FIRST_ARGUMENTS = [
+  [3, 8, 9, 7, 6],
+  [1, 2, 3, 4],
+  [7, 8, 3, 9, 5, 7],
+  [2, 1, 2, 1],
+  [1, 2, 3, 1, 2, 3],
+  [1, 2, 3, 4, 1, 2, 3, 4],
+  [3, 2, 1, 3, 2, 1],
+  [1, 2, 1, 2, 1, 2]
+]
+
+ROTATION_CASES = [
+  3, 4, 4, 2, 3, 4, 3, 2,
+]
+
+RESULT_CASES = [
+  [9, 7, 6, 3, 8],
+  [1, 2, 3, 4],
+  [3, 9, 5, 7, 7, 8],
+  [2, 1, 2, 1],
+  [1, 2, 3, 1, 2, 3],
+  [1, 2, 3, 4, 1, 2, 3, 4],
+  [3, 2, 1, 3, 2, 1],
+  [1, 2, 1, 2, 1, 2]
+]
+
+FIRST_ARGUMENTS.each.with_index do |argument, index|
+  if solution(argument, ROTATION_CASES[index]) == RESULT_CASES[index]
     puts "."
-elsif
-    puts "Error, expected: [9, 7, 6, 3, 8]"
+  else
+    puts "Test with #{argument} failed, it should have given #{RESULT_CASES[index]}"
+  end
 end
 
-if solution([1, 2, 3, 4], 4) == [1, 2, 3, 4]
+FIRST_ARGUMENTS.each.with_index do |argument, index|
+  if solution_2(argument, ROTATION_CASES[index]) == RESULT_CASES[index]
     puts "."
-elsif
-    puts "Error, expected: [1, 2, 3, 4]"
-end
-
-if solution([7, 8, 3, 9, 5, 7], 4) == [3, 9, 5, 7, 7, 8]
-    puts "."
-else
-    puts "Error, expected: [3, 9, 5, 7, 7, 8]"
-end
-
-# TEST FOR solution_2
-
-if solution_2([3, 8, 9, 7, 6], 3) == [9, 7, 6, 3, 8]
-    puts "."
-elsif
-    puts "Error, expected: [9, 7, 6, 3, 8]"
-end
-
-if solution_2([1, 2, 3, 4], 4) == [1, 2, 3, 4]
-    puts "."
-elsif
-    puts "Error, expected: [1, 2, 3, 4]"
-end
-
-if solution_2([7, 8, 3, 9, 5, 7], 4) == [3, 9, 5, 7, 7, 8]
-    puts "."
-else
-    puts "Error, expected: [3, 9, 5, 7, 7, 8]"
+  else
+    puts "Test with #{argument} failed, it should have given #{RESULT_CASES[index]}"
+  end
 end
