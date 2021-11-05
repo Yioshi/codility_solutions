@@ -10,9 +10,9 @@ sorted_sequence.each.with_index do |comparison, i|
     numbers_sequenced << comparison
   end
 end
-if numbers_sequenced == sorted_sequence
-  return 1
-else
-  return 0
+  if numbers_sequenced == sorted_sequence
+    return 1
+  else
+    return 0
   end
 end
